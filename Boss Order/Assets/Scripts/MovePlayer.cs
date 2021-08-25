@@ -5,6 +5,8 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     public float speed = 0;
+    public float rightturnspeed = 100;
+    public float leftturnspeed = 100;
     
     // Start is called before the first frame update
     void Start()
@@ -25,10 +27,10 @@ public class MovePlayer : MonoBehaviour
             speed = Time.deltaTime * 8;
         }
         if (Input.GetKey(KeyCode.RightArrow)){
-            transform.Rotate(new Vector3(0, 0, -5) * Time.deltaTime * 100);
+            transform.Rotate(new Vector3(0, 0, -5) * Time.deltaTime * rightturnspeed);
         }
         if (Input.GetKey(KeyCode.LeftArrow)){
-            transform.Rotate(new Vector3(0, 0, 5) * Time.deltaTime * 100);
+            transform.Rotate(new Vector3(0, 0, 5) * Time.deltaTime * leftturnspeed);
         }
         transform.Translate(Vector2.up * speed);
     }

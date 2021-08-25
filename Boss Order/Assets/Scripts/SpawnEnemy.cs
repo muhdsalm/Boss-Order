@@ -10,35 +10,30 @@ public class SpawnEnemy : MonoBehaviour
     public float minX, minY, maxX, maxY;
     public float then;
     public float now;
-    public float thenChangeRate = 0;
     public bool canSpawnEnemy = false;
-    public float divisorForThen = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        changerate = Time.deltaTime * 0.1f;
+        changerate = Time.deltaTime * 0.01f;
+        then = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        then = Time.time;
-        now = Time.time - (then * thenChangeRate);
-        if(now >= timeInterval){
-            now = 0;
-            thenChangeRate += 0.5f / divisorForThen;
-            divisorForThen += 2;
+        now = Time.time;
+        if (now - then >= Random.Range((timeInterval - 2), (timeInterval + 2))){
             canSpawnEnemy = true;
             spawnEnemy();
-
+            then = Time.time;
         }
-        //timeInterval -= changerate;
+        timeInterval -= changerate;
     }
     public void spawnEnemy(){
         if (canSpawnEnemy) {
             transform.position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
-            Instantiate(Enemy);
+            Instantiate(Enemy, transform.position, transform.rotation);
             canSpawnEnemy = false;
         }
     }

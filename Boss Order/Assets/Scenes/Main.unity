@@ -308,9 +308,7 @@ MonoBehaviour:
   maxY: 5
   then: 0
   now: 0
-  thenChangeRate: 0
   canSpawnEnemy: 0
-  divisorForThen: 2
 --- !u!4 &270351806
 Transform:
   m_ObjectHideFlags: 0
@@ -363,9 +361,7 @@ MonoBehaviour:
   maxY: 4.97
   then: 0
   now: 0
-  thenChangeRate: 0
   canSpawnEnemy: 0
-  divisorForThen: 2
 --- !u!4 &338072270
 Transform:
   m_ObjectHideFlags: 0
@@ -392,7 +388,7 @@ GameObject:
   - component: {fileID: 488265624}
   m_Layer: 0
   m_Name: EnemySpawnerBottom
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,14 +409,12 @@ MonoBehaviour:
   changerate: 0
   Enemy: {fileID: 7358544565494532984, guid: e97c047f486c12d419cf939f12843a8a, type: 3}
   minX: -6.7
-  minY: 4.97
+  minY: -4.97
   maxX: 6.7
   maxY: -4.97
   then: 0
   now: 0
-  thenChangeRate: 0
   canSpawnEnemy: 0
-  divisorForThen: 2
 --- !u!4 &488265625
 Transform:
   m_ObjectHideFlags: 0
@@ -556,9 +550,7 @@ MonoBehaviour:
   maxY: 5
   then: 0
   now: 0
-  thenChangeRate: 0
   canSpawnEnemy: 0
-  divisorForThen: 2
 --- !u!4 &1349765076
 Transform:
   m_ObjectHideFlags: 0

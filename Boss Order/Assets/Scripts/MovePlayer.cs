@@ -24,11 +24,11 @@ public class MovePlayer : MonoBehaviour
         if (transform.position.y < -5){
             transform.position = new Vector2(transform.position.x, -5);
         }
-        if (transform.position.x < -14.8){
-            transform.position = new Vector2(-14.8f, transform.position.y);
+        if (transform.position.x < -14){
+            transform.position = new Vector2(-14f, transform.position.y);
         }
-        if (transform.position.x > 14.8) {
-            transform.position = new Vector2(14.8f, transform.position.y);
+        if (transform.position.x > 14) {
+            transform.position = new Vector2(14f, transform.position.y);
         }
         if (speed > 0) {
             speed -= 1 * (Time.deltaTime / 2.5f);

@@ -21,7 +21,9 @@ public class MoveEnemy : MonoBehaviour
     void Update()
     {
         float step = Time.deltaTime * speed;
+        transform.Rotate(Vector3.RotateTowards(transform.position, target.position, 100, 100));
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
         speed += changerate;
     }
     void OnTriggerEnter2D(Collider2D other)

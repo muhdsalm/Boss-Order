@@ -7,15 +7,17 @@ public class SpawnEnemy : MonoBehaviour
     public float timeInterval = 5;
     public float changerate;
     public GameObject Enemy;
+    public GameObject Friend;
     public float minX, minY, maxX, maxY;
     public float then;
     public float now;
     public bool canSpawnEnemy = false;
+    public int friendOrEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        changerate = Time.deltaTime * 0.01f;
+        changerate = Time.deltaTime * 0.1f;
         then = Time.time;
     }
 
@@ -33,7 +35,15 @@ public class SpawnEnemy : MonoBehaviour
     public void spawnEnemy(){
         if (canSpawnEnemy) {
             transform.position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
-            Instantiate(Enemy, transform.position, transform.rotation);
+            friendOrEnemy = Random.Range(1, 3);
+            if (friendOrEnemy == 1)
+            {
+                Instantiate(Enemy, transform.position, transform.rotation);
+            }
+            if(friendOrEnemy == 2)
+            {
+                Instantiate(Friend,  transform.position, transform.rotation);
+            }
             canSpawnEnemy = false;
         }
     }

@@ -5,14 +5,16 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     public float speed = 0;
+    public float velocity = 4;
     public float rightturnspeed = 100;
     public float leftturnspeed = 100;
     public GameObject bullet;
+    public float changeRate = 0.01f;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        changeRate = Time.deltaTime * changeRate;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class MovePlayer : MonoBehaviour
         if (speed < 0){
             speed = 0;
         }
-        speed = Time.deltaTime * 8;
+        speed = Time.deltaTime * velocity;
         if (Input.GetKey(KeyCode.RightArrow)){
             transform.Rotate(new Vector3(0, 0, -5) * Time.deltaTime * rightturnspeed);
         }
@@ -44,16 +46,15 @@ public class MovePlayer : MonoBehaviour
             transform.Rotate(new Vector3(0, 0, 5) * Time.deltaTime * leftturnspeed);
         }
         if (Input.GetKeyDown(KeyCode.Space)){
+            GetComponent<AudioSource>().Play();
             Instantiate(bullet, transform.position, transform.rotation);
         }
         transform.Translate(Vector2.up * speed);
+        velocity += changeRate;
 
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+        Destroy(gameObject);
     }
 }
